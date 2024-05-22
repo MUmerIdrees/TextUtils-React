@@ -1,14 +1,14 @@
 import './App.css';
 import Alert from './components/Alert';
-// import About from './components/About';
+import About from './components/About';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import React, { useState } from 'react';
-// import {
-//   BrowserRouter as Router,
-//   Routes,
-//   Route
-// } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
 
 const modes = [
   {name: 'light', backgroundColor: 'white', alertMessage: 'Light mode has been enabled'},
@@ -50,20 +50,18 @@ function App() {
 
   return (
     <>
-      {/*<Router>*/}
+      <Router>
         <Navbar title="TextUtils" mode={navbarMode} name={modes[modeIndex].name} 
         toggleMode={toggleMode} />
         <Alert alert={alert} />
         <div className="container my-3">
-          {/*<Routes>
+          <Routes>
             <Route exact path="/about" element={<About />} />
             <Route exact path="/" element={<TextForm showAlert={showAlert} 
             heading="Enter the text to analyze below" mode={modeIndex} />} />
-          </Routes>*/ } 
-          <TextForm showAlert={showAlert} 
-            heading="Enter the text to analyze below" mode={modeIndex} /> 
+          </Routes>
         </div>
-      {/*</Router>*/}
+      </Router>
     </>
   );
 }
