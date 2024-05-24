@@ -27,21 +27,27 @@ export default function TextForm(props) {
     return (
         <>
             <div className="conatiner" style={{color: props.mode===0?'#042743':'white'}}>
-                <h1>{props.heading}</h1>
+                <h1 className="mb-4">{props.heading}</h1>
                 <div className="mb-3">
                     <textarea className="form-control" value={text} onChange={handleOnChange} 
-                    style={{backgroundColor: props.mode!==0?'grey':'white', 
-                    color: props.mode===0?'#042743':'white'}} 
+                    style={{backgroundColor: props.mode === 1 ? '#13466e':
+                                             props.mode === 2 ? '#0f591f' : 
+                                             props.mode === 3 ? '#6e2813' : 
+                                             'white',
+                            color: props.mode===0?'#042743':'white'}} 
                     id="myBox" rows="8">
                     </textarea>
                 </div>
-                <button className="btn btn-primary mx-1" onClick={handleUpClick}>
+                <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" 
+                onClick={handleUpClick}>
                     Convert to Uppercase
                 </button>
-                <button className="btn btn-primary mx-1" onClick={handleLowClick}>
+                <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" 
+                onClick={handleLowClick}>
                     Convert to Lowercase
                 </button>
-                <button className="btn btn-primary mx-1" onClick={handleClearClick}>
+                <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" 
+                onClick={handleClearClick}>
                     To clear text
                 </button>
             </div>
@@ -54,7 +60,7 @@ export default function TextForm(props) {
                     0 : text.trim().split(" ").length)} Minutes read</p>
                 <h2>Preview</h2>
                 <p>
-                    {text.length>0?text:"Enter something in the textbox to preview it here"}
+                    {text.length>0?text:"Nothing to preview!"}
                 </p>
             </div>
         </>

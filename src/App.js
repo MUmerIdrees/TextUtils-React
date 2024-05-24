@@ -45,20 +45,19 @@ function App() {
     setModeIndex(index);
     document.body.style.backgroundColor = mode.backgroundColor;
     showAlert(mode.alertMessage, "success");
-    document.title = `TextUtils - ${mode.name} Mode`;
   }
 
   return (
     <>
       <Router>
         <Navbar title="TextUtils" mode={navbarMode} name={modes[modeIndex].name} 
-        toggleMode={toggleMode} />
+        toggleMode={toggleMode} aboutText="About" />
         <Alert alert={alert} />
         <div className="container my-3">
           <Routes>
-            <Route exact path="/about" element={<About />} />
+            <Route exact path="/about" element={<About mode={modeIndex} />} />
             <Route exact path="/" element={<TextForm showAlert={showAlert} 
-            heading="Enter the text to analyze below" mode={modeIndex} />} />
+            heading="Try TextUtils - Word Counter, Character Counter" mode={modeIndex} />} />
           </Routes>
         </div>
       </Router>
