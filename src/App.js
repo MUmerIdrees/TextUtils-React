@@ -37,9 +37,11 @@ function App() {
   const toggleMode = (index) => {
     if(index !== 0) {
       setNavbarMode('dark');
+      document.body.classList.add('dark-mode');
     }
     else {
       setNavbarMode('light');
+      document.body.classList.remove('dark-mode');
     }
     const mode = modes[index];
     setModeIndex(index);
